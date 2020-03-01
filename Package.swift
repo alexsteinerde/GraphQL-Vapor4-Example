@@ -1,4 +1,4 @@
-// swift-tools-version:5.2
+// swift-tools-version:5.1
 import PackageDescription
 
 let package = Package(
@@ -9,14 +9,14 @@ let package = Package(
     dependencies: [
         // 💧 A server-side Swift web framework.
         .package(url: "https://github.com/vapor/vapor.git", from: "4.0.0-beta"),
-        .package(url: "https://github.com/vapor/fluent.git", from: "4.0.0-beta"),
-        .package(url: "https://github.com/vapor/fluent--driver.git", from: "-beta")
+        .package(url: "https://github.com/alexsteinerde/graphql-kit.git", from: "2.0.0-beta"),
+        .package(url: "https://github.com/alexsteinerde/graphiql-vapor.git", from: "2.0.0-beta"),
     ],
     targets: [
         .target(name: "App", dependencies: [
-            .product(name: "Fluent", package: "fluent"),
-            .product(name: "FluentDriver", package: "fluent--driver"),
-            . product(name: "Vapor", package: "vapor")
+            "Vapor",
+            "GraphQLKit",
+            "GraphiQLVapor"
         ]),
         .target(name: "Run", dependencies: ["App"]),
         .testTarget(name: "AppTests", dependencies: [
